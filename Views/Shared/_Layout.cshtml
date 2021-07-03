@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/misEstilos.css">
+    <title>@ViewData["Title"] - AppBootstrap</title>
+</head>
+  <body>
+
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Home"><img class="ico m-2" src="~/pic/logotrasp.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Home"></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Nosotros">Acerca de NAROO</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Cliente" asp-action="Index">Cliente</a>
+                        </li>
+
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Eventos">Eventos Para Ti</a>
+                            </li>
+                        }
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Logout">Cerrar Sesion</a>
+                            </li>
+                        }
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Welcome">Inicie Sesion</a>
+                            </li>
+                        }
+
+                    </ul>
+                   
+                </div>
+            </div>
+        </nav>
+
+
+    </header>
+
+        <main class="bg-warning">
+            <div class="container"> 
+                @RenderBody()
+                
+            </div>
+
+
+         </main>
+
+    <footer class="text-white-50 bg-dark p-1 d-flex justify-content-center ">
+        <div class="d-flex align-items-center">
+            <div> <img class="ico m-1" src="~/pic/github_blanco.png" alt="">   </div>
+            <div class="d-flex flex-column">
+                <small> By Julian Pedroza </small>
+                <a href="#" class="link-light">Julian9132</a>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+      <script src="~/js/site.js" asp-append-version="true"></script>
+      @RenderSection("Scripts", required: false)
+
+
+
+   </body>
+ </html>

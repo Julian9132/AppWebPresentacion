@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Denegado";
+}
+
+
+<h2 class="text-center m-2"> Eventos Para Ti </h2>
+
+
+
+    <div class="col-12 d-flex flex-column align-items-center flex-md-row flex-lg-row justify-content-md-center justify-content-lg-center align-items-md-start  align-items-lg-start">
+        <div class="col-10 col-md-5 col-lg-3 bg-white p-3 border rounded m-4">
+
+            <h2 class="text-center m-2"> @User.Identity.Name No esta autorizado para acceder </h2>
+        </div>
+
+
+        <div class="col-10 col-md-5 col-lg-7 bg-white p-3 border rounded m-4">
+            //mostrar los datos de elusuario logeado
+            <ol>
+                @foreach (var c in User.Claims)
+                {
+                    <li>
+                        @c.Type: @c.Value
+                    </li>
+                }
+
+            </ol>
+           
+        </div>
+
+
+
+    </div>
+ 

@@ -1,0 +1,94 @@
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@model IEnumerable<AppBootstrap.Models.Cliente>
+@{
+    ViewData["Title"] = "Cliente";
+}
+
+
+<h2 class="text-center m-2"> Lista Clientes </h2>
+
+    <div class="col-12 bg-warning d-flex flex-column align-items-center flex-md-row flex-lg-row justify-content-md-center justify-content-lg-center align-items-md-start  align-items-lg-start">
+
+        <div class="col-12 col-md-6 col-lg-3   p-2  m-4 d-flex align-items-center justify-content-start ">
+
+            <nav>
+                <ul class="nav nav-pills nav-fill">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" asp-action="Crear">Agregar Cliente </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+
+
+        <div class="col-12 col-md-6 col-lg-8 bg-white p-3 border rounded m-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        @foreach (var mycliente in Model)
+                        {
+                              <tr>
+                                <th scope="row">@mycliente.Codigo</th>
+                                 <td>@mycliente.Nombre</td>
+                                <td>@mycliente.Correo</td>
+                                <td>
+                                    @Html.ActionLink("Detalle", "Detalle", new { id = mycliente.Codigo })
+                                    @Html.ActionLink("Editar", "Editar", new { id = mycliente.Codigo })
+                                    @Html.ActionLink("Borrar", "Borrar", new { id = mycliente.Codigo })
+
+                                </td>
+                              </tr>
+                         }
+
+                    
+                   
+                </tbody>
+            </table>
+
+            <!-- definimos los objetos de la navegacion-->
+            @Html.PagedListPager((IPagedList)Model, Page => Url.Action("Index", new {Page = Page }),
+            new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
+            {
+
+                DisplayItemSliceAndTotal = false,
+                ContainerDivClasses = new[] { "navegation" },
+                LiElementClasses = new[] { "page-item"},
+                PageClasses = new[] { "page-link" }
+
+
+
+
+            })
+
+            @section Scripts {
+            <script>
+                $(document).ready(function () {
+                    $("ul.pagination > li.disabled > a").addClass("page-link")
+
+                });
+
+
+
+            </script>    
+
+            }
+           
+            <!-- defininimos los objetos de navegacion  -->
+
+        </div>
+
+
+
+    </div>
+ 

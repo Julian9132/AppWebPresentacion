@@ -1,0 +1,63 @@
+﻿@model AppBootstrap.Models.Cliente
+@{
+    ViewData["Title"] = "Crear";
+}
+
+
+<h2 class="text-center m-2"> Agregar Clientes </h2>
+
+    <div class="col-12 bg-warning d-flex flex-column align-items-center flex-md-row flex-lg-row justify-content-md-center justify-content-lg-center align-items-md-start  align-items-lg-start">
+
+        <div class="col-12 col-md-6 col-lg-3 bg-white p-2  m-4 d-flex align-items-center justify-content-start ">
+
+            <nav>
+                <ul class="nav nav-pills nav-fill">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" asp-action="Index">Ir a Listar </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+
+        </div>
+
+
+        <div class="col-12 col-md-6 col-lg-8 bg-white p-3 border rounded m-4">
+
+            <form asp-action="crear" class="row g-3">
+                <div class="col-md-4">
+                    <label  class="form-label">Codigo</label>
+                    <input asp-for="Codigo" type="text" class="form-control"  required placeholder="0000">
+                    <span class="text-danger"> @ViewData["msj"] </span>
+                    
+
+
+
+                </div>
+                <div class="col-md-4">
+                    <label  class="form-label">Nombre Usuario</label>
+                    <input asp-for="Nombre"type="text" class="form-control" required placeholder="Nombre Apellido">
+                   
+                </div>
+                <div class="col-md-4">
+                    <label  class="form-label">Correo</label>
+                     <input asp-for="Correo"type="email" class="form-control" required placeholder="usuario@dominio">
+                        <div class="invalid-feedback">
+                            Please choose a username.
+                        </div>
+                   
+                </div>
+
+                  
+               
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Enviar Datos</button>
+                </div>
+            </form>
+        </div>
+
+
+
+    </div>
+ 
